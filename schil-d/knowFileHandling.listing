@@ -1,1 +1,0 @@
-new StreamWriter("C:\\spruitjes.txt", true, Encoding.ASCII);

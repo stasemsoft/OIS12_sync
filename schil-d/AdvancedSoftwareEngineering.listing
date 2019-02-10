@@ -1,2 +1,0 @@
-Boot boot = new Boot();
-Auto auto = boot;

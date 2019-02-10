@@ -1,3 +1,0 @@
-# Schil A
-
-Uitleg.

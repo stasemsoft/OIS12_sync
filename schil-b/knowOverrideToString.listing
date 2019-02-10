@@ -1,1 +1,0 @@
-Persoon p = (Persoon)listBox1.Items[2];
