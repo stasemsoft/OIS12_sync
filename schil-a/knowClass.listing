@@ -1,0 +1,22 @@
+namespace HereComeTheMonsters
+{
+    public class Monster
+    {
+
+        private int hitPoints = 100;
+
+
+        public Monster(int initialHitPoints)
+        {
+            this.hitPoints = initialHitPoints;
+        }
+
+
+        public void LooseHitPoints(int damage)
+        {
+            this.hitPoints = this.hitPoints - damage;
+        }
+
+
+    }
+}

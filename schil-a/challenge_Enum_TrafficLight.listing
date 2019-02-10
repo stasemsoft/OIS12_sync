@@ -1,0 +1,12 @@
+TrafficLight trafficLight = new TrafficLight();
+// color has to be TrafficlightColors.Red.
+Console.WriteLine(trafficLight.GetCurrentcolor());
+trafficLight.NextState();
+// color has to be TrafficlightColors.Green.
+Console.WriteLine(trafficLight.GetCurrentColor());
+trafficLight.NextState();
+// color has to be TrafficlightColors.Orange.
+Console.WriteLine(trafficLight.GetCurentColor());
+trafficLight.NextState();
+// and TrafficlightColors.Red again!
+Console.WriteLine(trafficLight.GetCurentColor());
