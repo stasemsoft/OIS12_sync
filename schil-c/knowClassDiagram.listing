@@ -1,6 +1,0 @@
-pubic class A {
-
-	// Fields
-	private List<B> bs = new List<B>();
-
-}
