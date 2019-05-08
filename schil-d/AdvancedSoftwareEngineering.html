@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>So you wanna be a Software Engineer?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Highlight js -->
+    <link rel="stylesheet" href="../support/html/highlightjs/styles/default.css">
+    <link rel="stylesheet" href="../support/html/css/highlight-commands.css">
+    <script src="../support/html/highlightjs/highlight.pack.js"></script>
+    <script src="../support/html/js/highlight-commands.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="../support/html/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../support/html/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="../support/html/css/square-braket-associates.css" rel="stylesheet">
+    <style>
+/*        .container { max-width: 55em; } */
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <div class="container text-justify">
+      <section>
+        <h1>So you wanna be a Software Engineer?</h1>
+        <div class="attribution">Alexander</div>
+
+        <p>
+Stel je hebt de smaak
+van het <em>programmeren</em> te pakken hebt gekregen en
+wilt meer over <em>Software Engineering</em> te weten komen.
+In dit <em>part</em> enkele onderwerpen die
+eerder nog niet (uitgebreid) aan bod zijn gekomen
+maar ook belangrijk zijn.
+</p>
+
+<section>
+<h2>0.1. Achtergronden bij  Software Engineering: Inleiding</h2>
+<p>
+(Dit stuk tekst komt voornamelijk af van Alexander)
+</p>
+<p>
+Enkele belangrijke concepten
+</p><ul>
+<li>Accessibility: internal en public voor classes, public, protected, private</li>
+</ul>
+<p>
+voor functies.
+</p><ul>
+<li>Inheritance, met daarbij abstracte classes abstracte en virtuele functies,</li>
+</ul>
+<p>
+override van functies, aanroepen van base constructor
+</p><ul>
+<li>Interfacing - waarom kennen we dat concept en waarom zou je het gebruiken</li>
+<li>Exception handling - wanneer is iets een fout en wanneer acceptabel gedrag</li>
+</ul>
+<p>
+met een onverwacht resultaat.
+</p><ul>
+<li>Events</li>
+</ul>
+
+
+</section><section>
+<h2>0.2. Basisconcepten van programmeren</h2>
+
+<p>
+Bij OOP (Object Oriented Programming) worden een aantal basisconcepten gebruikt
+die voor elke taal hetzelfde zijn en slechts afwijken in de manier waarop
+je ze opschtijft. De basisconcepten zijn op te delen in grofweg drie categorien:
+</p>
+<dl><dt>Statements</dt>
+<dd>Een commando wat onvoorwaardelijk wordt uitgevoerd. Denk hierbij bijvoorbeeld aan het toekennen van een variabele of het aanroepen van een functie.</dd>
+</dl>
+
+<dl><dt>Keuzestructuren</dt>
+<dd>Een (aantal) statement(s) wat alleen uitgevoerd wordt als er aan een bepaalde voorwaarde wordt voldaan.</dd>
+</dl>
+
+<dl><dt>Herhalingsstructuren</dt>
+<dd>Een (aantal) statement(s) wat meermaals uitgevoerd wordt, mogelijk ook onder bepaalde condities.</dd>
+</dl>
+
+<section>
+<h3>0.2.1. Statements</h3>
+<p>
+Een statement is het meest basis concept bij het programmeren. Met een statement
+wordt een commando in het programma uitgevoerd. Hierbij kun je denken
+aan het declareren van een variabele, het toekennen van een waarde aan een variabele
+en het aanroepen van een methode. In code zien statements er als volgt
+uit:
+</p><figure><pre><code>int i = 4;
+int j = 5;
+int uitkomst = BerekenProduct(i, j);</code></pre><figcaption></figcaption></figure>
+
+</section><section>
+<h3>0.2.2. Keuzestructuren (if-statements)</h3>
+
+<p>
+<a id="fig:keuzestructuur_01"></a>
+<figure>
+	<img src="figures/keuzestructuur_01" width="60%"/>
+	<figcaption>0.1. keuzestructuur</figcaption>
+</figure>
+</p>
+<p>
+Zoals de naam al aangeeft, gaat het bij keuzestructuren om het maken van een
+keuze of een bepaald stuk code wel of niet uitgevoerd wordt, afhankelijk van een
+bepaalde conditie. Meestal bestaat een keuzestructuur uit 2 delen: De code die
+uitgevoerd wordt als de conditie waar is en de code die uitgevoerd wordt als de
+conditie niet waar is. Dit wordt schematisch weergegeven in
+<a href="#fig:keuzestructuur_01">0.1</a>
+</p>
+<p>
+In code ziet dit er dan als volgt uit:
+</p>
+<figure><pre><code>if (Leeftijd &gt; 65)
+{
+   prijs = 25;
+}
+else
+{
+   prijs = 35;
+}</code></pre><figcaption></figcaption></figure>
+
+<p>
+Als uitbreiding op keuzestructuren zijn er nog twee varianten.
+</p>
+<p>
+De eerste variant is de keuzestructuur, waarin er alleen code uitgevoerd wordt
+als de conditie waar is. Dit betekent dat in
+<a href="#fig:keuzestructuur_01">0.1</a>
+</p>
+
+<p>
+als de conditie niet waar
+is, er geen actie meer uitgevoerd wordt en er dus meteen naar ’Einde’ gegaan
+wordt. In de code betekent dit dat de ’else’ constructie weggelaten kan worden.
+</p>
+<p>
+De tweede variant is wat complexer en bevat meerdere keuzes die uitgevoerd
+worden. Dit betekent dat er in figuur 2.1 een extra keuze bijkomt aan de kant van
+de ’nee’ en daarin wederom een keuze gemaakt wordt. Dit ziet er schematisch
+dan als volgt uit:
+</p>
+<p>
+<a id="fig:keuzestructuur_02"></a>
+<figure>
+	<img src="figures/keuzestructuur_02" width="60%"/>
+	<figcaption>0.2. keuzestructuur met extra condities</figcaption>
+</figure>
+</p>
+<p>
+<a href="#fig:keuzestructuur_02">0.2</a>
+</p>
+<p>
+Zoals in het schema te zien is, kan elke aanpassing van de prijs in dit voorbeeld,
+maar onder 1 conditie uitgevoerd worden: De prijs wordt 25 als de leeftijd boven
+de 65 is, de prijs wordt 0 als de leeftijd NIET boven de 65 is, maar wel onder
+de 4 en in alle andere gevallen wordt de prijs 35.
+In de code komt er dan een ’else if’ bij:
+</p><figure><pre><code>if (Leeftijd &gt; 65)
+{
+   prijs = 25;
+}
+else if (Leeftijd &lt; 4)
+{
+   prijs = 0;
+}
+else
+{
+   prijs = 35;
+}</code></pre><figcaption></figcaption></figure>
+
+</section><section>
+<h3>0.2.3. Herhalingsstructuren (loops)</h3>
+
+<p>
+Als bepaalde statements meerdere keren achter elkaar uitgevoerd moeten worden,
+dan worden daar herhalingsstructuren (lussen of loops in het Engels)
+voor gebruikt. Conceptueel zijn er drie varianten van de herhalingsstructuur:
+conditie-gebaseerd, aantal-gebaseerd en lijst-gebaseerd.
+</p>
+<p>
+Afhankelijk van op welke manier de code meermalen uitgevoerd moet worden,
+kies je 1 van onderstaande methoden.
+</p>
+<section>
+<h4>0.2.3.1. Conditie-gebaseerde structuur (while)</h4>
+
+<p>
+<a id="fig:herhalingsstructuur"></a>
+<figure>
+	<img src="figures/herhalingsstructuur" width="60%"/>
+	<figcaption>0.3. herhalingsstructuur</figcaption>
+</figure>
+</p>
+<p>
+Het komt vaak voor dat code uitgevoerd moet worden zolang er aan een bepaalde
+conditie voldaan is. Stel dat je bijvoorbeeld een getal moet ophogen met 5 tot
+dit getal boven de 100 komt, dan gebruik je hiervoor een conditie-gebaseerde
+structuur. Zie
+<a href="#fig:herhalingsstructuur">0.3</a>
+</p>
+<p>
+In code ziet dit er als volgt uit:
+</p><figure><pre><code>int i = 1;
+while (i &lt; 100)
+{
+   i = i + 5;
+}</code></pre><figcaption></figcaption></figure>
+<p>
+Als de conditie de eerste keer al niet waar is, dan wordt de code binnen de
+while niet uitgevoerd. Een alternatief van deze variant is de do-while constructie.
+Bij de do-while wordt de code uitgevoerd, totdat de conditie niet meer waar is
+en wordt de code dus altijd ten minste 1x uitgevoerd. De code hiervoor ziet er
+als volgt uit:
+</p><figure><pre><code>int i = 1;
+do
+{
+   i = i + 5;
+} while (i &lt; 100)</code></pre><figcaption></figcaption></figure>
+
+</section><section>
+<h4>0.2.3.2. Aantal-gebaseerde structuur (for)</h4>
+
+<p>
+Een andere structuur die vaak voorkomt is het voor een vast aantal keer uitvoeren
+van dezelfde code. Denk hierbij aan het op het scherm tonen van de tafel
+van 10. Vooraf is duidelijk dat het tonen van de waarde precies 10 maal plaats
+moet vinden en dit aantal zal niet veranderen. Dit kan opgelost worden met
+de conditie-gebaseerde structuur, maar in (bijna) alle programmeertalen is hier
+een speciale constructie voor: de for-herhalingsstructuur. In code ziet deze er
+als volgt uit:
+</p><figure><pre><code>for (int i = 0; i &lt; 10; i++)
+{
+   Console.WriteLine(i * 10);
+}</code></pre><figcaption></figcaption></figure>
+
+<p>
+De eerste regel bestaat uit 3 delen:
+</p><ul>
+<li>int i = 0: De startwaarde van de teller</li>
+<li>i &lt; 10: De conditie die vertelt wat de eindwaarde van de teller is, ofwel: zolang deze conditie niet waar is, wordt de code uitgevoerd.</li>
+<li>i++: De verhoging van de teller.</li>
+</ul>
+
+<p>
+Bovenstaande code zou ook als een while-lus geschreven kunnen worden, door
+de startwaarde boven de while te zetten, en de verhoging als laatste statement
+binnen de lus op te nemen. Je krijgt dan qua structuur een zelfde schema als
+die in figuur 2.3.
+</p>
+
+</section><section>
+<h4>0.2.3.3. Lijst-gebaseerde structuur (foreach)</h4>
+
+<p>
+Als je op alle elementen van een lijst een actie wilt uitvoeren, dan kun je hiervoor
+een for-lus gebruiken waarbij de conditie voor de eindwaarde het aantal
+elementen uit de lijst bevat. De meeste talen bieden hier ook een specifieke
+structuur voor aan: de foreach-lus. In code ziet dit er als volgt uit:
+</p>
+<figure><pre><code>List&lt;Persoon&gt; personen = HaalAllePersonenOp();
+foreach (Persoon persoon in personen)
+{
+   Console.WriteLine(persoon.Naam);
+}</code></pre><figcaption></figcaption></figure>
+
+<p>
+Je ziet dat je in deze structuur niet expliciet hoeft aan te geven hoeveel iteraties
+uitgevoerd gaan worden, en je hebt direct de instantie van de Persoon
+beschikbaar.
+</p>
+</section></section></section><section>
+<h2>0.3. Variabelen</h2>
+
+<section>
+<h3>0.3.1. Scope</h3>
+
+<p>
+Elke variabele heeft een scope. De scope van een variabele geeft aan wanneer
+de variabele bestaat. Neem bijvoorbeeld de volgende code:
+</p><figure><pre><code>int i = 1;
+if (i == 1)
+{
+   int j = i;
+   j = j * 2;
+}
+i = i + 1;</code></pre><figcaption></figcaption></figure>
+
+<p>
+Vanaf het moment dat de variabele i aangemaakt wordt, bestaat deze en
+blijft deze in dit hele stuk code bestaan en kan dus binnen en na de if-statement
+gebruikt worden. Voor de variabele j is dit anders. De variabele j wordt binnen
+de scope van het if-statement gedefinieerd, waardoor deze variabele dus alleen
+binnen het if-statement gebruikt kan worden. Na de afsluitende accolade van
+het if-statement kan de variabele j niet meer gebruikt worden. De compiler
+herkent dit en zal een foutmelding geven als je een variabele buiten zijn scope
+probeert te gebruiken.
+</p>
+<p>
+Scoping kennen we op een aantal niveau’s:
+</p><ul>
+<li>Een variabele die gedeclareerd wordt binnen een structuur (herhalings- of keuzestructuur) kan alleen binnen die structuur gebruikt worden.</li>
+<li>Een variabele die gedeclareerd wordt binnen een methode kan alleen binnen die methode gebruikt worden.</li>
+<li>Een variabele die gedeclareerd wordt in een klasse (bijvoorbeeld een property of private field) kan gebruikt worden zolang de instantie van een klasse bestaat.</li>
+<li>Een variabele die static in een klasse gedeclareerd wordt kan altijd gebruikt worden.</li>
+</ul>
+
+</section><section>
+<h3>0.3.2. Typen</h3>
+
+<p>
+In programmeren hebben we het over het type van een variabele als we bedoelen
+wat de variabele voor data en functionaliteit kan bevatten. Denk hierbij aan
+een <code>int</code> (integer) voor gehele getallen, string voor tekst en File voor een bestand.
+Ook kun je zelf nieuwe typen toevoegen door een ’class’ te definieren.
+Bij object-georienteerde talen onderscheiden we twee soorten typen:
+</p>
+<p>
+<strong>Primitieve typen</strong>: Zoals de naam al aangeeft, zijn primitieve typen de meest
+basis variant van variabelen. Hierbij kun je denken aan int en decimal om
+getallen op te slaan, bool om true of false op te slaan en char om een letter in
+op te slaan. Dit is dan ook het enige wat je met deze typen doet.
+</p>
+<p>
+<strong>Object typen</strong>: Object typen (of ook wel eens complexe typen genoemd) zijn
+typen die gebruikt worden om meer complex gedrag te modelleren. In deze
+typen kunnen naast waarden, ook gedrag gecodeerd worden. In OO-talen worden
+deze typen gemaakt door een nieuwe Class te definieren en deze van een
+implementatie te voorzien.
+</p>
+<p>
+<strong>Uitzondering: String</strong>: Strings zijn binnen OO-talen een vreemde eend in
+de bijt. Eigenlijk is een string een object (namelijk: een collectie letters van
+het type char in een specifieke volgorde). Echter: in de praktijk is dit meestal
+helemaal niet handig. Daarom is de string in een aantal OO-talen een hybride
+vorm. In C# bijvoorbeeld, wordt de string toegepast als primitief type als
+je strings opslaat, maar als object als je string-functionaliteiten gebruikt zoals
+Split, Replace en Substring.
+</p>
+</section><section>
+<h3>0.3.3. Value typen versus Reference typen</h3>
+
+<p>
+We hebben in de vorige sectie gekeken naar primitieve typen versus object typen.
+Het verschil tussen deze typen leidt tot een belangrijk verschil in OOprogrammeren
+tussen deze typen: Alle primitieve typen zijn value typen en alle
+object typen zijn reference typen. De String valt in dit geval onder de primitieve
+typen.
+</p>
+<section>
+<h4>0.3.3.1. Hoe werkt een value type?</h4>
+
+<p>
+Wanneer je in code een primitief type declareert (bijvoorbeeld: <code>int leeftijd =
+4</code> ), dan wordt er een stukje geheugen gereserveerd waarin deze waarde wordt
+opgeslagen. De variabele leeftijd verwijst dan naar dit stukje geheugen, waarin
+de integer waarde 4 is opgeslagen. Dit heeft een aantal gevolgen:
+</p>
+<ul>
+<li>In dit stukje geheugen mag alleen maar een integer staan. Hier kun je dus geen string, komma-getallen of objecten aan toekennen.</li>
+<li>Dit stukje geheugen is alleen beschikbaar voor de variabele leeftijd. Er is geen andere variabele die naar hetzelfde stuk geheugen verwijst en een aanpassing van de waarde kan dus alleen via een aanpassing van de variabele leeftijd.</li>
+<li>Wanneer de variabele leeftijd niet meer bestaat, wordt het geheugen weer vrijgegeven.</li>
+</ul>
+
+<p>
+Stel je hebt de volgende code:
+</p><figure><pre><code>int leeftijd = 4;
+string naam = &quot;Paul&quot;;</code></pre><figcaption></figcaption></figure>
+
+<p>
+Dan ziet het geheugen er op dat moment uit als in figuur
+<a href="#fig:geheugenLayout01">0.4</a>.
+</p>
+<p>
+<a id="fig:geheugenLayout01"></a>
+<figure>
+	<img src="figures/geheugenLayout01" width="40%"/>
+	<figcaption>0.4. Geheugen layout bij uitvoeren code</figcaption>
+</figure>
+</p>
+<p>
+Een ander aspect van value types is het toekennen van de ene variabele aan
+de andere (bijvoorbeeld int oudeLeeftijd = leeftijd). Als dit uitgevoerd wordt,
+dan wordt er in het geheugen een kopie gemaakt van de waarde in leeftijd en
+deze wordt toegekend aan oudeLeeftijd. Dit betekent dus, dat als je daarna de
+waarde van leeftijd aanpast, de waarde van oudeLeeftijd NIET mee verandert.
+Stel dus dat je de volgende code uitvoert:
+</p><figure><pre><code>int leeftijd = 4;
+int oudeLeeftijd = leeftijd;
+leeftijd = 10;</code></pre><figcaption></figcaption></figure>
+
+<p>
+Dan ziet het geheugen er na het uitvoeren van de code uit als in figuur
+<a href="#fig:geheugenLayout02">0.5</a>
+</p>
+<p>
+<a id="fig:geheugenLayout02"></a>
+<figure>
+	<img src="figures/geheugenLayout02" width="40%"/>
+	<figcaption>0.5. Geheugen layout bij uitvoeren code</figcaption>
+</figure>
+</p>
+
+</section><section>
+<h4>0.3.3.2. Hoe werkt een reference type?</h4>
+
+<p>
+Als je een reference type declareert dan doe je dit met het keyword <em>new</em>. Op
+dat moment worden er niet één, maar twee stukjes geheugen gereserveerd:
+In één stuk geheugen wordt de inhoud van de variabele opgeslagen en in het andere
+stuk geheugen wordt een referentie naar deze inhoud opgeslagen. Stel dus dat
+je de volgende code uitvoert:
+</p><figure><pre><code>Auto opel = new Auto(&quot;Opel␣Zafira&quot;);</code></pre><figcaption></figcaption></figure>
+<p>
+dan ziet het geheugen er uit als in
+<a href="#fig:geheugenLayout03">0.6</a>
+</p>
+<p>
+<a id="fig:geheugenLayout03"></a>
+<figure>
+	<img src="figures/geheugenLayout03" width="40%"/>
+	<figcaption>0.6. Geheugen layout bij uitvoeren code</figcaption>
+</figure>
+</p>
+<p>
+Zoals je ziet zijn er 2 stukjes geheugen gereserveerd, in verschillende delen
+van het geheugen.
+</p>
+<p>
+Ook het toekennen van de ene variabele aan de andere werkt bij reference
+typen anders. Wanneer je een variabele toekent aan een andere, wordt er één
+extra stukje geheugen gereserveerd, waarin een referentie naar de al bestaande
+inhoud van wordt opgeslagen. Stel dus dat je de volgende code hebt:
+</p><figure><pre><code>Auto opel = new Auto(&quot;Opel␣Zafira&quot;);
+Auto nogEenOpel = opel;</code></pre><figcaption></figcaption></figure>
+
+<p>
+Dan ziet het geheugen er uit als in figuur
+<a href="#fig:geheugenLayout04">0.7</a>
+</p>
+<p>
+<a id="fig:geheugenLayout04"></a>
+<figure>
+	<img src="figures/geheugenLayout04" width="40%"/>
+	<figcaption>0.7. Geheugen layout bij uitvoeren code</figcaption>
+</figure>
+</p>
+
+<p>
+Gevolg hiervan is dat als je de naam van de auto aanpast via de variabele
+<em>opel</em> ( <code>opel.Naam = ’Opel Corsa’</code> ), deze ook meteen aangepast is als je de naam
+ophaalt via <em>nogEenOpel</em>.
+</p>
+<p class="note">Dit geldt ook bij parameters in functies.</p>
+</section><section>
+<h4>0.3.3.3. Tips bij typen variabelen</h4>
+
+<p>
+Een vuistregel om te weten of iets een value of reference type is, is te
+kijken naar de declaratie van de variabele:
+–Wordt de variabele toegekend door er direct een waarde aan te koppelen
+( <code>int i = 4</code> ), dan is het een value type.
+–Wordt de variabele toegekend door het gebruik van new
+( <code>Auto auto = new Auto()</code> ), dan is het een reference type.
+</p>
+</section></section></section><section>
+<h2>0.4. OO-technieken</h2>
+
+<section>
+<h3>0.4.1. Inheritance: Hoe werkt dit in het geheugen</h3>
+
+<p>
+In de theorie van object georienteerd programmeren is inheritance (afgeleide
+klassen) en interfacing aan bod gekomen (Zie hiervoor de relevante modules in
+Canvas of zoek op internet). In dit hoofdstuk komt aan bod hoe inheritance in
+het geheugen werkt en wordt daarmee een achtergrond gegeven over inheritance
+als concept.
+</p>
+<p>
+<a id="fig:classdiagram"></a>
+<figure>
+	<img src="figures/classdiagram_01" width="40%"/>
+	<figcaption>0.8. Class diagram</figcaption>
+</figure>
+</p>
+
+<p>
+Een voorbeeld van een <em>class diagram</em> dat gebruik maakt van <em>inheritance</em>
+is te zien in figuur
+<a href="#fig:classdiagram">0.8</a>
+</p>
+
+<p>
+Als je dit klassendiagram geïmplementeerd hebt, dan kun je al deze klassen
+gebruiken om objecten mee te maken. Stel dat je de volgende code schrijft:
+</p><figure><pre><code>Motorboot yamaha = new Motorboot();</code></pre><figcaption></figcaption></figure>
+
+<p>
+Er wordt dan een stuk geheugen gereserveerd waarin deze Motorboot wordt
+opgeslagen (op de manier zoals beschreven in hoofdstuk 3.3). In het stuk geheugen
+waar het object opgeslagen is, zitten alle gegevens van Motorboot (aantalPk),
+alle gegevens uit Boot (naam) en alles uit IVoertuig (Kenteken). Het
+type van de variabele geeft aan bij welke van deze gegevens je mag. In het geval
+van Motorboot betekent dit dat je bij alle gegevens mag.
+</p>
+<p>
+Stel dat je nu de volgende code hebt:
+</p><figure><pre><code>Motorboot yamaha = new Motorboot();
+Boot boot = yamaha;
+IVoertuig voertuig = yamaha;</code></pre><figcaption></figcaption></figure>
+
+<p>
+Er is nu een stuk geheugen gereserveerd waarin de Motorboot is opgeslagen.
+De variabele yamaha bevat een referentie naar dit stuk geheugen. De regel code
+waarin de boot variabele wordt aangemaakt, bevat een referentie naar hetzelfde
+stuk geheugen als de motorboot, maar als je de variabele boot gebruikt kun
+je niet meer bij het aantalPk. Hetzelfde geldt voor de variabele voertuig: je
+kunt nu alleen nog bij het Kenteken, ondanks dat de verwijzing naar het stuk
+geheugen is waar alle data staat.
+</p>
+<section>
+<h4>0.4.1.1. Beperkingen</h4>
+
+<p>
+In het voorbeeld van de Motorboot werd een motorboot aangemaakt, waarna
+deze als Boot en IVoertuig gebruikt werd. Andersom kan dit niet. De volgende
+code zal dus niet compilen:
+</p><figure><pre><code>Boot boot = new Boot();
+Motorboot yamaha = boot;</code></pre><figcaption></figcaption></figure>
+<p>
+De reden hiervan is dat het geheugen wat gereserveerd is wel de gegevens van
+Boot en IVoertuig bevat, maar niet van Motorboot. Als je dat geheugen dan
+wilt benaderen als Motorboot zou er een stukje geheugen moeten zijn waarin
+het aantalPk opgeslagen is, maar dit is er niet.
+Wat ook niet kan is het volgende:
+</p><figure><pre><code>Boot boot = new Boot();
+Auto auto = boot;</code></pre><figcaption></figcaption></figure>
+<p>
+Hier geldt ongeveer hetzelfde: In het geheugen is wel IVoertuig en Boot beschikbaar,
+maar niet Auto. Hierdoor is het niet mogelijk het geheugen te benaderen
+alsof het een auto is.
+13
+</p>
+
+</section></section><section>
+<h3>0.4.2. Software Architecture</h3>
+<p>
+Als je een hondehok bouwt kun je wat planken nemen en een hamer met spijkers
+en dan direct beginnen met knutselen.
+Een vakman zal eerst een schets maken hoe het er uit moet komen te zien.
+Gaan we een huis (of groter) bouwen dan komt daar meer ont-werp bij kijken
+en spreken we van architectuur.
+</p>
+<p>
+Ook bij het bouwen van software is het al snel verstandig om van te voren
+een <em>schets</em> of ander ontwerp te maken.
+Het <em>probleem</em> is doorgaans <em>opgelost</em> voordat de <em>code</em> ingeklopt wordt!
+</p>
+<p>
+Om van te voren een oplossing(srichting) te kunnen bedenken is ervaring nodig,
+het valt buiten de scope van dit materiaal.
+Een geïnteresseerde verwijzen we graag naar de volgende site:
+<a href="http://aosabook.org/en/index.html">http://aosabook.org/en/index.html</a>
+
+</p></section></section>
+      </section>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../support/html/js/bootstrap.min.js"></script>
+
+    <!-- Syntax highlighting of code blocks -->
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- Prettify annotated paragraphs-->
+    <script src="../support/html/js/annotated-paragraphs.js"></script>
+
+  </body>
+</html>

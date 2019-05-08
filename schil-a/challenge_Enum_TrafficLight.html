@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Challenge Traffic Light (met Enum)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Highlight js -->
+    <link rel="stylesheet" href="../support/html/highlightjs/styles/default.css">
+    <link rel="stylesheet" href="../support/html/css/highlight-commands.css">
+    <script src="../support/html/highlightjs/highlight.pack.js"></script>
+    <script src="../support/html/js/highlight-commands.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="../support/html/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../support/html/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="../support/html/css/square-braket-associates.css" rel="stylesheet">
+    <style>
+/*        .container { max-width: 55em; } */
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <div class="container text-justify">
+      <section>
+        <h1>Challenge Traffic Light (met Enum)</h1>
+        <div class="attribution">FHICT</div>
+
+        <p>
+We gaan (wederom) verkeerslichten programmeren.
+Als je de TrafficLight Challenge uit een vorig hoofdstuk al hebt gedaan,
+zeker als je de voorbeeldcode had overgenomen (met de fouten er in) zul je gemerkt hebben dat
+het gebruik van een <em>String</em> voor de toestand (kleur) van een TrafficLight
+snel leidt tot fouten! Zo zijn <em>Orange</em>, <em>Oranje</em> en <em>orange</em>
+allemaal door de compiler geaccepteerd worden maar de waarden zijn verschillend:
+hierdoor kunnen allerlei bugs ontstaan:
+</p>
+<p>
+Neem bijvoorbeeld 2 TrafficLights, zeg <em>trafficLight1</em> en <em>trafficLight2</em>.
+Als de <em>color</em> van <em>trafficLight1</em> waarde <em>Oranje</em> heeft en
+de <em>color</em> van <em>trafficLight2</em> waarde <em>Orange</em> dan zal een vergelijking als
+</p><figure><pre><code>if (trafficLight1.color == trafficLight2.color) {
+  ...
+}</code></pre><figcaption></figcaption></figure>
+<p>
+<em>false</em> opleveren terwijl de programmeur <em>true</em> verwacht:
+een tikfout die grote gevolgen kan hebben voor het gedrag van de software.
+</p>
+<p>
+Om die bugs te voorkomen gaan we er ditmaal een Enum bij gebruiken:
+Door het gebruik van een <em>Enum</em> kan de compiler helpen fouten te
+ontdekken en voorkomen!
+</p>
+<p>
+Voor de <em>color</em> (toestand) van het TrafficLight maken we een <code>Enum</code> aan:
+</p><figure><pre><code>public enum TrafficlightColors {
+   Red,
+   Orange,
+   Green
+}</code></pre><figcaption></figcaption></figure>
+
+<section>
+<h4>0.0.0.1. Analyse</h4>
+<ul>
+<li>De code is in het Engels.</li>
+<li>Ik wil de mogelijkheid hebben meerdere <code>objecten</code> van type <em>TrafficLight</em> te maken, maar ik wil het maar 1 keer programmeren.</li>
+<li>Een <em>TrafficLight</em> kan de kleuren (<em>toestanden</em>) 'Green', 'Orange', 'Red' hebben: gebruik voor deze toestanden Engelse benamingen.</li>
+<li>Voor de veiligheid wordt de toestand bij het maken van een TrafficLight altijd op <em>rood</em> gezet.</li>
+<li>Vanuit <em>Red</em> kan de toestand alleen <em>Green</em> worden, dan <em>Orange</em>, dan weer <em>Red</em>.</li>
+</ul>
+
+
+</section><section>
+<h4>0.0.0.2. Ontwerp</h4>
+<ul>
+<li>Een <code>class</code> <em>TrafficLight</em>.</li>
+<li>Deze class heeft een <code>private Field</code> <em>color</em> van type <em>TrafficlightColors</em>.</li>
+<li>Initiële waarde van <em>color</em>: <em>TrafficlightColors.Red</em>.</li>
+<li>De class krijgt een <code>method</code> <em>NextState()</em> die het TrafficLight de volgende waarde van <em>color</em> geeft.</li>
+<li>We willen aan een TrafficLight ook kunnen opvragen wat de huidige kleur is: <code>public TrafficlightColors GetCurrentColor()</code></li>
+</ul>
+
+</section><section>
+<h4>0.0.0.3. Realisatie</h4>
+<ul>
+<li>Maak de in het het ontwerp genoemde zaken aan.</li>
+<li>De <code>method</code> <em>NextState</em> geeft de kleur <strong>na</strong> het veranderen van de kleur terug: <code>public TrafficlightColors NextState() {...}</code></li>
+</ul>
+
+<p>
+Een Console app heeft een <em>main</em>-method (<code>public static void Main(string [] args)</code>)
+waarin je code kunt zetten als:
+</p><figure><pre><code>TrafficLight trafficLight = new TrafficLight();
+// color has to be TrafficlightColors.Red.
+Console.WriteLine(trafficLight.GetCurrentcolor());
+trafficLight.NextState();
+// color has to be TrafficlightColors.Green.
+Console.WriteLine(trafficLight.GetCurrentColor());
+trafficLight.NextState();
+// color has to be TrafficlightColors.Orange.
+Console.WriteLine(trafficLight.GetCurentColor());
+trafficLight.NextState();
+// and TrafficlightColors.Red again!
+Console.WriteLine(trafficLight.GetCurentColor());</code></pre><figcaption></figcaption></figure>
+<p>
+Is deze code slordig in elkaar gezet? Kijk goed of er geen fouten in staan!
+Verbeter ze zonodig en test het programma uit.
+</p>
+<p>
+Kun je verbeteringen op het programma bedenken?
+
+</p></section>
+      </section>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../support/html/js/bootstrap.min.js"></script>
+
+    <!-- Syntax highlighting of code blocks -->
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- Prettify annotated paragraphs-->
+    <script src="../support/html/js/annotated-paragraphs.js"></script>
+
+  </body>
+</html>

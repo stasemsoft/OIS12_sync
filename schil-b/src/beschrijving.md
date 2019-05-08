@@ -1,3 +1,0 @@
-# Schil B
-
-Uitleg.

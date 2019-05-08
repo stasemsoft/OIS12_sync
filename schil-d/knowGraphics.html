@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>GDI Graphics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Highlight js -->
+    <link rel="stylesheet" href="../support/html/highlightjs/styles/default.css">
+    <link rel="stylesheet" href="../support/html/css/highlight-commands.css">
+    <script src="../support/html/highlightjs/highlight.pack.js"></script>
+    <script src="../support/html/js/highlight-commands.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="../support/html/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../support/html/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="../support/html/css/square-braket-associates.css" rel="stylesheet">
+    <style>
+/*        .container { max-width: 55em; } */
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <div class="container text-justify">
+      <section>
+        <h1>GDI Graphics</h1>
+        <div class="attribution">FHICT</div>
+
+        <section>
+<h3>0.0.1. Graphics tutorial: Inleiding</h3>
+
+<p>
+Zelf figuren tekenen via het <em>Paint</em>- <code>Event</code>.
+</p>
+<section>
+<h4>0.0.1.1. Het Graphics object</h4>
+<p>
+Elk <code>object</code> van het type <em>Form</em>, <em>Button</em>, <em>Panel</em>, <em>PictureBox</em>, etc.
+(ook wel <em>control</em> object genoemd) heeft een bijbehorend <em>Graphics</em> object.
+Dit Graphics object maakt het mogelijk om op de achtergrond van de control te tekenen.
+</p>
+<p>
+De regel
+</p><figure><pre><code>graphics.DrawLine(Pens.Blue, 10, 10, 20, 10);</code></pre><figcaption></figcaption></figure>
+<p>
+tekent een lijn met een blauwe pen van punt (10,10) naar punt (20,10)
+</p>
+<p>
+ 
+</p></section><section>
+<h4>0.0.1.2. Stap 1: Tekenen met het Paint event</h4>
+
+<p>
+Hiervoor gebruiken we het <em>Paint</em> <code>event</code> van het <code>form</code>.
+Ieder <code>form</code> bevat een <em>Paint</em> <code>event</code>,
+dat automatisch afgevuurd wordt als het form (en de tekening er op) beschadigd raakt.
+Door aan  het <em>Paint</em> <code>event</code> een <code>event-handler</code> te hangen kunnen we de tekening herstellen.
+</p>
+<p>
+Maak een nieuw project in <em>Visual studio</em> en noem dit project <em>TekenenMetHetPaintEvent</em>.
+</p>
+<p>
+Hernoem de <em>Form1</em> <code>class</code> naar <em>TekeningForm</em>.
+Zet een knop onderaan het Form genaamd <em>drawButton</em> en zet er ook een <code>label</code> <em>Draw</em> op.
+</p>
+<p>
+Maak vervolgens een <code>Event Handler</code> aan voor het <em>Paint</em> <code>event</code> van het <em>TekeningForm</em>.
+</p>
+<p>
+<a id="fig:EventHandler"></a>
+<figure>
+	<img src="figures/graphicsPropertyPaintEvent.png" width="70%"/>
+	<figcaption>0.1. Paint Event</figcaption>
+</figure>
+</p>
+<p>
+Dit kun je doen door in het <code>properties</code> venster van het <em>TekeningForm</em>
+te dubbelklikken op het <em>Paint</em> <code>event</code>.
+Let op dat de bliksem ingedrukt is, zodat je de <code>Events</code> ziet (figuur
+<a href="#fig:EventHandler">0.1</a>
+).
+</p>
+<p>
+ 
+<em>Visual Studio</em> voegt nu de volgende code toe aan het <em>TekeningForm</em>.
+Dit is de <code>Event Handler</code> voor het <em>Paint</em> <code>Event</code>.
+</p>
+<figure><pre><code>private void TekeningForm_Paint(object sender, PaintEventArgs e)
+{
+
+}</code></pre><figcaption></figcaption></figure>
+
+<p>
+Zet nu code voor het tekenen in de <code>event-handler</code> van het <em>Paint</em> <code>event</code>:
+</p><figure><pre><code>private void TekeningForm_Paint(object sender, PaintEventArgs e)
+{
+    // Vraag het Graphics object op, dat bij dit form hoort.
+    // Met dit graphics object kunnen we op het form tekenen.
+		Graphics graphics = e.Graphics;
+
+    // Na het opvragen van het Graphics object kunnen we
+    // gaan tekenen.
+    int breedte = 100;
+    int hoogte = 50;
+
+    // Teken een rechthoek op coordinaat (10, 10)
+    // en een gevulde rechthoek op coordinaat (10, 70).
+    graphics.DrawRectangle(Pens.Black, 10, 10, breedte, hoogte);
+    graphics.FillRectangle(Brushes.Blue, 10, 70, breedte, hoogte);
+}</code></pre><figcaption></figcaption></figure>
+
+<p>
+Voer het programma uit en kijk of het doet wat je verwacht!
+</p>
+<p>
+De tekening blijft staan als je de form minimaliseert en maximaliseert of wanneer je de grootte verandert.
+</p>
+<p>
+Kijk ook in de <em>Intellisense</em>
+naar de andere methoden van het <em>Graphics</em> object, zoals bijvoorbeeld:
+</p><ul>
+<li><code>DrawLine(...)</code></li>
+<li><code>DrawBezier(...)</code></li>
+<li><code>DrawEllipse(...)</code></li>
+<li><code>DrawPolygon(...)</code></li>
+<li><code>DrawRectangle(...)</code></li>
+</ul>
+
+
+
+</section><section>
+<h4>0.0.1.3. Stap 2: De ‘Draw ’knop gebruiken om te tekenen</h4>
+<p>
+We gaan bij deze stap verder bouwen aan de code die gegeven is in ‘voorbeeldcodeTekenenMetHetPaintEvent’.
+We gaan code toevoegen die ervoor zorgt dat er pas getekend wordt nadat er op de ‘Draw’ knop gedrukt is.
+</p>
+<p>
+Doe:
+Maak een kopie van de map ‘voorbeeldcodeTekenenMetHetPaintEvent’.
+Met deze kopie ga je verder werken. Open de gekopieerde solution.
+</p>
+<p>
+We mogen alleen tekenen in de <code>event-handler</code> van het <em>Paint</em> <code>event</code>.
+Tekenen in de <code>event-handler</code> van de ‘Draw’ knop is ‘verboden’.
+</p>
+<p>
+Hoe kunnen we er nu toch voor zorgen dat er pas na het drukken op de <em>Draw</em> knop
+getekend wordt en niet direct na de start van het programma?
+</p>
+<p>
+<em>Een eerste plan:</em>
+</p>
+<p>
+We introduceren een nieuw bool dataveld <em>laatTekeningZien</em> in onze <em>TekeningForm</em> class.
+Dit nieuwe <code>dataveld</code> gaat bijhouden of er getekend mag worden.
+Initieel mag er niet getekend worden, dus de initiële waarde van <em>laatTekeningZien</em> moet <em>false</em> zijn.
+In de <em>Paint</em> <code>event-handler</code> gaan we de conditie van <em>laatTekeningZien</em> gebruiken voor
+het wel/niet tekenen van de figuren. Het drukken op de <em>Draw</em> knop moet ervoor zorgen dat
+<em>laatTekeningZien</em> <em>true</em> wordt en er dus getekend mag worden.
+</p>
+<p>
+Als we dit plan uitvoeren krijgen we de volgende code in de klasse TekeningForm:
+</p><figure><pre><code>  private bool laatTekeningZien; // laat tekening alleen zien als true.
+
+  public TekeningForm() {
+    InitializeComponent();
+    laatTekeningZien = false;
+  }
+
+  private void TekeningForm_Paint(object sender, PaintEventArgs e) {
+    if (laatTekeningZien) {
+      Graphics graphics = e.Graphics;
+      int breedte = 100;
+      int hoogte = 50;
+      graphics.DrawRectangle(Pens.Black, 10, 10, breedte, hoogte);
+      graphics.FillRectangle(Brushes.Blue, 10, 70, breedte, hoogte);
+    }
+  }
+
+  private void drawButton_Click(object sender, EventArgs e) {
+    laatTekeningZien = true;
+		// Het aanroepen van Refresh() zorgt ervoor ervoor dat het Form
+    // als 'beschadigd' wordt gemarkeerd. Hierdoor wordt zijn paint
+    // event automagisch afgevuurd.
+    // Gebruik van de Refresh() methode forceert dus het opnieuw
+    // tekenen van het form dmv het Paint event.
+    Refresh();
+  }</code></pre><figcaption></figcaption></figure>
+
+
+<p>
+Doe:
+Zorg ervoor dat het programma in je gekopieerde project werkt als de bovenstaande code.
+Wat verwacht je dat het programma doet? Voer het programma uit en kijk of je verwachtingen kloppen.
+Wat gebeurt er als je de form minimaliseert en maximaliseert na het drukken op de <em>Draw</em> knop?
+Wat denk je dat hier aan de hand is?
+</p>
+<p>
+Het programma lijkt nu compleet. Toch gaat er nog iets mis waardoor er niet direct getekend wordt na het drukken op de <em>Draw</em> knop. Na het minimaliseren en maximaliseren van de form is de tekening er ineens wel. Rara hoe kan dat?
+</p>
+<p>
+Verklaring: Het minimaliseren en maximaliseren van het TekeningForm veroorzaakt
+automatisch een <em>Paint</em> <code>event</code>. Door het <em>Paint</em> <code>event</code> wordt de
+<em>TekeningForm_Paint</em> <code>event-handler</code> aangeroepen en die gaat tekenen
+(we hebben immers zelf <em>TekeningForm_Paint</em> aan het <em>Paint</em> <code>event</code> verbonden).
+</p>
+<p>
+Als we dus willen tekenen na het drukken op de <em>Draw</em> knop moeten we niet alleen <em>laatTekeningZien</em> op <em>true</em> zetten.
+We moeten er ook voor zorgen dat er een <em>Paint</em> <code>event</code> afgevuurd wordt. Hoe doen we dit?
+</p>
+<p>
+Je kunt een <em>Paint</em> <code>event</code> forceren door de <code>methode</code> <em>Refresh()</em> aan te roepen.
+</p>
+<p>
+ 
+Napraten:
+Slimmeriken hebben misschien het volgende geprobeerd:
+</p><figure><pre><code>// VOORBEELD VAN HOE HET NIET(!) MOET...
+private void drawButton_Click(object sender, EventArgs e) {
+    laatTekeningZien = true;   // Ervoor zorgen dat er getekend kan
+                               // worden.
+    TekeningForm_Paint(wat moet hier??, wat moet hier??);
+}
+// DIT WAS DUS EEN VOORBEELD VAN HOE HET NIET(!) MOET...</code></pre><figcaption></figcaption></figure>
+
+<p>
+Hier kunnen we kort over zijn: het direct aanroepen van <code>event-handlers</code> is niet de bedoeling.
+</p>
+
+
+</section><section>
+<h4>0.0.1.4. Stap 3: Onderzoek coördinaten stelsel</h4>
+<p>
+In de voorgaande opdrachten heb je geleerd hoe je kunt tekenen met een Graphics object.
+In deze opdracht ga je zelf onderzoeken hoe het coördinatenstelsel werkt waarmee getekend wordt. De uitkomst van dit onderzoekje heb je nodig als voorbereiding op de ‘BallenWereld’ opdracht.
+</p>
+<p>
+Doe:
+Maak een applicatie die de volgende figuren tekent op een form:
+</p>
+<p>
+
+<figure>
+	<img src="figures/graphicsAppCirkels.png" width="60%"/>
+	<figcaption>Teken App</figcaption>
+</figure>
+</p>
+<p>
+Eisen:
+</p><ul>
+<li>Elke cirkel heeft als diameter 75</li>
+<li>In elke hoek staat één cirkel.</li>
+<li>In het midden staat een cirkel</li>
+<li>De twee diagonale lijnen kruisen elkaar in het midden.</li>
+<li>Het programma voldoet aan bovenstaande eisen voor elke <em>Size</em> van 300x300 en groter.</li>
+<li>Test het programma met <em>Size</em> “300;300” en “500;400” voor de form.</li>
+</ul>
+<p>
+Let op dat je de <em>Size</em> property van je form instelt vóór het runnen van je programma. Je hoeft niet te anticiperen op het resizen van je form tijdens de uitvoer van je programma.
+</p>
+<p>
+Hints:
+</p><ul>
+<li>Waar ligt het coordinaat (0,0) in het tekenvlak?</li>
+<li>Wat is het verschil tussen <em>Width</em> en <em>ClientRectangle.Width</em> en <em>Height</em> en <em>ClientRectangle.Height</em>?</li>
+<li>De methode voor het tekenen van een cirkel heet niet <em>DrawCircle(...)</em>!</li>
+</ul>
+
+
+
+<p>
+Extra info: Gebruik maken van pennen en penselen
+De voorbeeldprogramma’s die je bij de opdrachten hebt gekregen maken gebruik van standaard <em>pennen</em> en <em>penselen</em>.
+Deze worden beschikbaar gemaakt door de <em>Pens</em> <code>class</code> en de <em>Brushes</em> <code>class</code>.
+Je kunt echter ook zelf pennen en penselen maken. Zo kun je bijvoorbeeld een pen maken met een bepaalde dikte, of een penseel die een plaatje als patroon gebruikt. Dit ligt echter buiten de scope van de lesstof.
+</p>
+<p>
+Hierbij een voorbeeld waarbij een standaard pen wordt gebruikt.
+</p>
+<figure><pre><code>	graphics.DrawRectangle(Pens.Black, 10, 10, breedte, hoogte);</code></pre><figcaption></figcaption></figure>
+
+<p>
+En hetzelfde voorbeeld, maar dan met een zelf gedefinieerde pen.
+</p><figure><pre><code>	int penDikte = 1;
+	Pen blackPen = new Pen(Color.Black, penDikte);
+	graphics.DrawRectangle(blackPen, 10, 10, breedte, hoogte);</code></pre><figcaption></figcaption></figure>
+
+
+
+</section></section><section>
+<h3>0.0.2. Uitbreiding 1 (niveau 3 / 5)</h3>
+
+<p>
+Maak het formulier iets groter, zodat er onderaan een label past in een gebied waar niet wordt getekend.
+Voeg onderaan een label toe en schrijf hier de x en y coördinaat naartoe indien ergens op het formulier wordt geklikt.
+Bijv. x: 20, y:40
+Tip: Gebruik hiervoor het <em>MouseDown</em> <code>event</code>. Deze <code>handler</code> heeft een <code>parameter</code> genaamd <em>e</em> van <code>type</code> <em>MouseEventArgs</em>.
+De X en Y waarde van de coördinaat vraag je  op met respectievelijk <code>e.X</code> en <code>e.Y</code>.
+</p>
+
+</section><section>
+<h3>0.0.3. Uitbreiding 2 (niveau 4 / 5)</h3>
+
+<p>
+Breid het programma uit en teken een rondje waar geklikt wordt met de muis.
+Onthoud de punten in een lijst.
+Verbind een punt steeds met het vorige door middel van een lijn.
+Kies voor de lijn en voor het rondje een willekeurige kleur uit vijf zelfgekozen,
+in de code vastgelegde, kleuren.
+Voeg een knop toe, naast het bovengenoemde label, waarmee de toegevoegde punten en
+de verbindingslijnen weer gewist kunnen worden.
+
+</p></section>
+      </section>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../support/html/js/bootstrap.min.js"></script>
+
+    <!-- Syntax highlighting of code blocks -->
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- Prettify annotated paragraphs-->
+    <script src="../support/html/js/annotated-paragraphs.js"></script>
+
+  </body>
+</html>

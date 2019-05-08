@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Hoe programmeer je met Objecten?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Highlight js -->
+    <link rel="stylesheet" href="../support/html/highlightjs/styles/default.css">
+    <link rel="stylesheet" href="../support/html/css/highlight-commands.css">
+    <script src="../support/html/highlightjs/highlight.pack.js"></script>
+    <script src="../support/html/js/highlight-commands.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="../support/html/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../support/html/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="../support/html/css/square-braket-associates.css" rel="stylesheet">
+    <style>
+/*        .container { max-width: 55em; } */
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <div class="container text-justify">
+      <section>
+        <h1>Hoe programmeer je met Objecten?</h1>
+        <div class="attribution">FHICT</div>
+
+        <p>
+<a id="fig:MonsterGame"></a>
+<figure>
+	<img src="figures/MonsterGame.png" width="80%"/>
+	<figcaption>0.1. MonsterGame</figcaption>
+</figure>
+</p>
+<section>
+<h3>0.0.1. Hero tegen Monsters</h3>
+<p>
+Hoe groter software wordt, hoe tijdrovender het  testen en onderhouden.
+Daarom wordt in de softwarewereld gezocht naar manieren om programma's onderhoudbaar te maken.
+Een van de meer succesvolle manieren is het werken met <em>objecten</em>.
+</p>
+<p>
+Een team dat een Computer Game maakt over een <em>hero</em> (held)
+die tegen <em>monsters</em> vecht
+zal liefst op één plek willen programmeren wat de eigenschappen
+van de hero  zijn
+en ook wat een monster is en wat je aan het monster kunt vragen.
+</p>
+<p>
+Als er 2 monsters zijn worden er 2 <em>objecten</em> gemaakt,
+als er 8 monsters zijn worden er 8 <em>objecten</em> gemaakt.
+Elk van deze objecten representeert 1 monster.
+De eigenschappen en het gedrag van een monster wordt geprogrammeerd in
+een stuk van het programma dat we een <code>Class</code>
+(klasse) noemen en dat (in dit voorbeeld)
+de naam <strong>Monster</strong> krijgt.
+</p>
+<p>
+Voorbeeld in C# (hoe je dit in Visual Studio kunt doen komt een stukje verder):
+</p><figure><pre><code>class Monster {
+      ...
+}</code></pre><figcaption></figcaption></figure>
+<p>
+waarbij op de plaats van de puntjes de code voor deze <code>class</code> komt.
+</p>
+<p>
+Voorbeeld in Java:
+</p><figure><pre><code>class Monster {
+      ...
+}</code></pre><figcaption></figcaption></figure>
+
+<p>
+Voorbeeld in Swift:
+</p><figure><pre><code>class Monster {
+      ...
+}</code></pre><figcaption></figcaption></figure>
+
+<p>
+Inderdaad, deze voorbeelden zijn hetzelfde.
+Je zult merken dat er echt wel verschillen zijn hoe je in de ene of de andere
+taal een <code>class</code> noteert, maar in welke taal je ook zit:
+<em>welke</em> <code>classes</code> je aanmaakt blijft hetzelfde!
+</p>
+
+<p class="note">In veel programmeertalen is afgesproken dat de naam van een <code>class</code> met een hoofdletter begint.</p>
+<p>
+Software Engineers bedenken in het begin van een project
+welke <code>objecten</code> er nodig zijn en daaruit volgt
+welke <code>classes</code> er geprogrammeerd gaan worden.
+Dit kun je grotendeels bedenken zonder te weten in welke taal
+de software gebouwd gaat worden!
+Je kunt dat enigszins vergelijken met het bouwen van een huis:
+Waar de muren, ramen en deuren komen (de structuur) kun je tot zekere hoogte
+bedenken en tekenen zonder te weten of het huis met bakstenen,
+van beton of van hout gebouwd gaat worden!
+</p>
+<p>
+Een <code>object</code> kan bepaalde eigenschappen hebben.
+Zo zal elk Monster in eerste instantie helemaal gezond zijn.
+Als de <em>hero</em> hem aanvalt zal het <em>monster</em>
+moe worden of gewond raken en
+uiteindelijk wellicht bezwijken.
+</p>
+<p>
+
+<figure>
+	<img src="figures/ClassMonster.png" width="30%"/>
+	<figcaption>Class Monster</figcaption>
+</figure>
+</p>
+
+
+<section>
+<h4>0.0.1.1. Hoe maak ik een class aan in Visual Studio?</h4>
+<p>
+Klik met rechtermuisknop op het project en kies <code>Add Item</code>,
+kies daarna een <code>class</code>. Onderin het scherm kun je de gewenste
+<code>class name</code> aangeven (<code>file name</code> is <code>class name</code> met
+<code>extensie</code> <em>.cs</em>) en dan op de <em>OK</em>-knop.
+</p>
+
+
+</section></section><section>
+<h3>0.0.2. Gezondheid</h3>
+<p>
+In dit spel kunnen we dat realiseren
+door het monster een getal <em>hitPoints</em> te geven:
+Voor een pas <em>aangemaakt</em> monster staat dit op 100,
+bij verwondingen wordt dit gehele getal steeds kleiner,
+bij 0 valt het monster verslagen neer.
+Een waarde als <em>hitPoints</em> die elk <code>object</code>
+van een bepaald <code>type</code> met zich meedraagt
+noemen we een <code>Field</code>
+We maken hiertoe in Monster een <code>veld</code> <em>levenspunten</em> aan.
+</p><figure><pre><code>class Monster {
+  int hitPoints = 100;
+}</code></pre><figcaption></figcaption></figure>
+
+<p>
+Hiermee is bepaald dat <strong>elk</strong> monster een <em>hitPoints</em> heeft.
+De waarde van dat getal kan per <em>monster object</em> verschillen:
+<em>Monster 1</em>  kan nog op 100 staan terwijl <em>monster 2</em> misschien
+nog maar 13 over heeft.
+</p>
+
+<p>
+De code die in een <code>class</code> staat wordt gedeeld met alle <code>objecten</code>
+van die <code>class</code> (meestal zeggen we: alle <code>objecten</code> van dat <code>type</code>,
+want een <code>class</code> is een manier om een <code>type</code> te definiëren).
+Om een <code>object</code> van <code>class</code> <em>Monster</em> aan te maken:
+</p>
+<p>
+C# of Java:
+</p><figure><pre><code>new Monster()</code></pre><figcaption></figcaption></figure>
+<p>
+(we zeggen dan ook wel dat er gebruik gemaakt wordt van de <em>new</em> <code>operator</code>)
+</p>
+<p>
+Hiermee wordt ergens in het geheugen een <code>object</code>
+van <code>type</code> <em>Monster</em> aangemaakt, we hebben echter géén manier
+om naar dat <code>object</code> te <em>verwijzen</em> (<em>refereren</em>).
+Vergelijk het met een ballon met gas: zolang je
+het touwtje hebt (de referentie naar de balon) kun je bij de ballon,
+maar als je het touwtje loslaat kun je niet meer bij de ballon komen.
+</p>
+<p>
+Zo'n <em>referentie</em> kunnen we opslaan in een <code>Field</code>
+(ook wel een variabele genoemd)
+en dat <code>Field</code> moet ergens in een <code>class</code> zitten:
+We maken hiervoor een <em>Game</em>-<code>object</code> aan dat
+de referenties naar alle <em>heroes</em> en <em>monsters</em> bevat.
+De code van het <em>Game</em> <code>object</code> komt in de <code>class</code> Game te staan.
+</p>
+
+<p>
+
+<figure>
+	<img src="figures/ClassDiagram_A.png" width="80%"/>
+	<figcaption>Schematische weergave</figcaption>
+</figure>
+</p>
+<p>
+
+<figure>
+	<img src="figures/ClassDiagram_B.png" width="80%"/>
+	<figcaption>Iets handigere schematische weergave</figcaption>
+</figure>
+</p>
+<p>
+In <code>class</code> Hero is een <code>Field</code>
+</p><figure><pre><code>int numberDefeatedMonsters = 0;</code></pre><figcaption></figcaption></figure>
+<p>
+aangemaakt. De held wil namelijk graag dat de hele wereld weet hoeveel
+monsters er door hem/haar verslagen zijn.
+</p>
+<p>
+De <code>class</code> <em>Game</em> heeft referenties naar 1 <em>hero</em> en
+2 monsters (<em>monster 1</em> en <em>monster 2</em>) en aan het ervoor vermelde
+<code>type</code> (dat zijn de <code>class</code> namen) kun je zien dat
+de <em>hero</em> zich gedraagt zoals in <code>class</code> 'Hero' geprogrammeerd is,
+terwijl de beide monsters zich gedragen volgens de code in <code>class</code> Monster.
+</p>
+<figure><pre><code>// Fields in de class Game
+Hero hero;
+Monster monster1;
+Monster monster2;
+
+
+public Game()
+{
+   hero = new Hero();
+   monster1 = new Monster();
+   monster2 = new Monster();
+}</code></pre><figcaption></figcaption></figure>
+
+
+</section><section>
+<h3>0.0.3. Attack</h3>
+<p>
+Onze <em>hero</em> staat te popelen om een monster te gaan aanvallen.
+Hiervoor gaan we <em>gedrag</em> in de <code>class</code> <em>Hero</em> programmeren:
+</p>
+
+<p>
+Dit wil zeggen dat je naar een <code>object</code> van <code>type</code> <em>Hero</em>
+een <em>bericht</em> kunt sturen die <em>Attack</em> heet.
+Verder vertel je <strong>welk</strong> monster aangevallen wordt en
+hoeveel <em>schade</em> (<em>damage</em>)
+hierbij toegebracht wordt aan het monster (dus hoeveel er van de
+<em>hitPoints</em> punten van het monster af gaan).
+</p>
+<p>
+Als het bericht <em>Attack</em> naar een <em>Held</em> <code>object</code> gestuurd wordt
+(in veel programmeertalen praten we niet over <em>een bericht sturen</em>
+maar noemen we het <em>een methode aanroepen</em>) wordt
+de code van die methode uitgevoerd.
+</p>
+
+<p>
+De held handelt dit bericht af door een bericht <em>LooseHitPoints</em>
+te sturen naar het monster dat tussen de haakjes genoemd wordt.
+</p>
+<p>
+Nu gaan we coderen hoe het afhandelen van het bericht
+er uit kan zien. We zeggen dan dat we de <code>method</code>
+(want zo'n bericht heet in veel programmeertalen een <code>method</code>)
+<em>Attack</em> in de <code>class</code> <em>Hero</em> programmeren
+</p><figure><pre><code>void Attack(Monster monster, int damage)
+{
+  monster.LooseHitPoints(damage);
+}</code></pre><figcaption></figcaption></figure>
+
+<p>
+ofwel: als een <code>object</code> van type <em>Hero</em> (want in die class staat deze code)
+het bericht <em>Attack</em> krijgt (met achter <em>Attack</em> tussen haakjes
+aangegeven <strong>welk</strong> monster en hoeveel damage)
+stuurt ie een bericht <em>LooseHitPoints</em>
+naar het aangegeven monster. De binnengekomen info
+over hoeveelheid <em>damage</em> wordt doorgegeven aan dit nieuwe bericht.
+</p>
+<p>
+In de methode worden 2 zogenaamde parameters gebruikt, namelijk
+<em>monster</em> van het <code>type</code> <em>Monster</em> en
+<em>damage</em> van het <code>type</code> <em>int</em> (tussen haakjes te vinden na
+de methode naam).
+</p>
+<p>
+Het woord <code>void</code> wil zeggen dat er geen waarde wordt teruggegeven door de methode,
+Er kan ook in plaats van <code>void</code> een zogenaamd <code>return type</code> staan dat aangeeft
+wat voor soort waarde er terug gegeven wordt.
+</p>
+
+<p>
+In <code>class</code> <em>Monster</em> moet vervolgens de <code>method</code> <em>LooseHitPoints</em>
+gecodeerd worden:
+</p><figure><pre><code>void LooseHitPoints(int damage)
+{
+    this.hitPoints = this.hitPoints - damage;
+}</code></pre><figcaption></figcaption></figure>
+<p>
+Uitleg:
+</p><ul>
+<li>Wederom begint het met <em>void</em> omdat de methode niks teruggeeft.</li>
+<li>Dan de methodenaam <em>LooseHitPoints</em>.</li>
+<li>Tussen de haakjes de ene parameter, genaamd <em>damage</em> en van type <em>int</em>.</li>
+<li>Tussen de accolades of <em>curly brackets</em> ({ en }) staat een assignment:<ul>
+<li>Een assignment is te herkennen aan het =-teken (spreek uit als <strong>wordt</strong>).</li>
+<li>Rechts van de = staat een <em>expressie</em>, zeg maar een berekening, die uitgerekend (geëvalueerd) wordt. In dit geval: <code>this.hitPoints - damage</code>.</li>
+<li>Het woord <em>this</em> geeft aan dat er iets gedaan wordt met het <em>object</em> waar we nu 'in' zitten: het specifieke monster dus dat werd aangevallen en dat dus als parameter aan method <em>Attack</em> werd meegegeven. In methode <em>Attack</em> zie je dat van <em>DAT</em> specifieke monster de methode <em>LooseHitPoints</em> wordt aangeroepen.</li>
+<li><em>Evaluatie</em> (berekening) van <em>this.hitPoints</em> geeft het <em>hitPoints</em>-getal van dat monster.</li>
+<li>De '<code>- damage</code>' zorgt dat de meegegeven waarde van de parameter hier vanaf getrokken wordt.</li>
+<li>De waarde van <em>this.hitPoints</em> (links van de =) wordt de uitkomst van de berekening.</li>
+</ul>
+</li>
+</ul>
+
+
+<section>
+<h4>0.0.3.1. Constructie van een object</h4>
+<p>
+Net zoals we bij een methode aanvullende informatie mee kunnen
+geven in de vorm van <code>parameters</code> kunnen we dat bij het aanmaken
+van een nieuw <code>object</code> ook. Hiertoe gebruiken we een <code>constructor</code>:
+Een <code>constructor</code> ziet er ongeveer uit als een methode:
+</p><figure><pre><code>Monster(int initialHitPoints)
+{
+  this.hitPoints = initialHitPoints;
+}</code></pre><figcaption></figcaption></figure>
+
+<p>
+Een <code>constructor</code> herken je alsvolgt:
+</p><ul>
+<li>De constructor lijkt heel erg op een normale methode, maar...</li>
+<li>Er wordt geen <code>return-type</code> (of <code>void</code>) vermeld.</li>
+<li>De naam (<em>Monster</em> in dit geval) is gelijk aan de naam van de <code>class</code>.</li>
+</ul>
+
+</section><section>
+<h4>0.0.3.2. Constructor in Visual Studio</h4>
+<p>
+Je kunt natuurlijk de code hierboven zelf intypen (tussen de accolades van de <code>class</code>)
+maar als je op die plek intypt <em>ctor</em> en dan 2x op <em>tab</em> drukt
+doet Visual Studio een deel van het werk voor je.
+</p>
+<p>
+Als we nu <code>new Monster(125)</code> aanroepen vanuit code wordt er een object
+van type <em>Monster</em> geconstrueerd en daarvoor staat na constructie
+de <em>hitPoints</em>-waarde op het meegegeven getal, 125 dus in dit geval.
+</p>
+<p>
+Bij een <code>constructor</code> kunnen (net als bij een <em>normale</em> methode) ook
+meerdere parameters meegegeven worden.
+</p>
+
+
+
+</section></section><section>
+<h3>0.0.4. Wat hebben we nu?</h3>
+<p>
+We hebben nu een basis neergezet voor een spel waarin een <em>hero</em> <em>monsters</em> kan aanvallen.
+</p>
+<section>
+<h4>0.0.4.1. Om het werkend te krijgen</h4>
+<p>
+Later wordt nog uitgelegd waarom, maar onthoudt vast dat we elk <em>Field</em> <code>private</code> maken.
+<code>Methods</code> en <code>classes</code> mogen <code>public</code> zijn.
+</p>
+</section><section>
+<h4>0.0.4.2. Code tot nu toe</h4>
+<p>
+Voor de volledigheid volgt nu de code van de classes zoals die tot hier beschreven is.
+</p>
+<p>
+Allereerst de <code>class</code> <em>Game</em>
+</p><figure><pre><code>namespace HereComeTheMonsters
+{
+    public class Game
+    {
+        public Game()
+        {
+            Hero hero = new Hero();
+            Monster monster1 = new Monster(125);
+            Monster monster2 = new Monster(100);
+        }
+    }
+}</code></pre><figcaption></figcaption></figure>
+
+<p>
+dan <code>class</code> <em>Hero</em>
+</p><figure><pre><code>namespace HereComeTheMonsters
+{
+    public class Hero
+    {
+
+        public Hero()
+        {
+        }
+
+
+        public void Attack(Monster monster, int damage)
+        {
+            monster.LooseHitPoints(damage);
+        }
+
+    }
+}</code></pre><figcaption></figcaption></figure>
+
+<p>
+en tot slot <code>class</code> <em>Monster</em>
+</p><figure><pre><code>namespace HereComeTheMonsters
+{
+    public class Monster
+    {
+
+        private int hitPoints = 100;
+
+
+        public Monster(int initialHitPoints)
+        {
+            this.hitPoints = initialHitPoints;
+        }
+
+
+        public void LooseHitPoints(int damage)
+        {
+            this.hitPoints = this.hitPoints - damage;
+        }
+
+
+    }
+}</code></pre><figcaption></figcaption></figure>
+</section></section>
+      </section>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../support/html/js/bootstrap.min.js"></script>
+
+    <!-- Syntax highlighting of code blocks -->
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- Prettify annotated paragraphs-->
+    <script src="../support/html/js/annotated-paragraphs.js"></script>
+
+  </body>
+</html>

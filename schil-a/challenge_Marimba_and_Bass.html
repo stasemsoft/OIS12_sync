@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Challenge De Marimba en de Bas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Highlight js -->
+    <link rel="stylesheet" href="../support/html/highlightjs/styles/default.css">
+    <link rel="stylesheet" href="../support/html/css/highlight-commands.css">
+    <script src="../support/html/highlightjs/highlight.pack.js"></script>
+    <script src="../support/html/js/highlight-commands.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="../support/html/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../support/html/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="../support/html/css/square-braket-associates.css" rel="stylesheet">
+    <style>
+/*        .container { max-width: 55em; } */
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <div class="container text-justify">
+      <section>
+        <h1>Challenge De Marimba en de Bas</h1>
+        <div class="attribution">FHICT</div>
+
+        <p>
+Maak een Console app aan.
+Creëer hierin een <code>class</code> <em>Marimba</em>
+met een <code>method</code> <em>void PlayNote(string note)</em>.
+Om het principe te begrijpen is het goed genoeg (en het snelste)
+het 'spelen' van noten te realiseren door <code>Console.WriteLine(&quot;marimba plays note:&quot;+note)</code>
+</p>
+<p>
+Je kunt nu in je programma een marimba aanmaken en noten
+laten spelen.
+</p><figure><pre><code>Marimba marimba = new Marimba();
+marimba.playNote(&quot;e&quot;);
+marimba.(&quot;d#&quot;);
+marimba.PlayNote(&quot;e&quot;);
+marimba.PlayNote(&quot;d#&quot;);
+marimba.PlayNote(&quot;e&quot;);</code></pre><figcaption></figcaption></figure>
+
+<p>
+Als je nu ook nog een <code>class</code> BassGuitar aanmaakt kun je meerdere instrumenten
+aanmaken en om de beurt noten laten spelen:
+</p><figure><pre><code>Marimba marimba = new Marimba();
+BassGuitar bassGuitar = new BassGuitar();
+bassGuitar.PlayNote(&quot;a&quot;);
+marimba.PlayNote(&quot;e&quot;);
+bassGuitar.PlayNote(&quot;g&quot;);
+marimba.PlayNote(&quot;d#&quot;);
+bassGuitar.PlayNote(&quot;f&quot;);
+marimba.PlayNote(&quot;e&quot;);
+marimba.PlayNote(&quot;d#&quot;);
+bassGuitar.PlayNote(&quot;e&quot;);
+marimba.PlayNote(&quot;e&quot;);</code></pre><figcaption></figcaption></figure>
+
+<p>
+Verzin zelf hoe je dit programma verder kunt uitbreiden en leef je uit.
+
+</p>
+      </section>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../support/html/js/bootstrap.min.js"></script>
+
+    <!-- Syntax highlighting of code blocks -->
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- Prettify annotated paragraphs-->
+    <script src="../support/html/js/annotated-paragraphs.js"></script>
+
+  </body>
+</html>
